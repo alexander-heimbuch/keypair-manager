@@ -1,6 +1,6 @@
 {
   "name": "keypair-manager",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple cli tool for managing your ssh-key",
   "main": "index.js",
   "scripts": {

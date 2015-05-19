@@ -2,14 +2,18 @@ var fs = require('fs-extra'),
 	clc = require('cli-color'),
 	path = require('path'),
 
+	home = process.env.HOME || process.env.USERPROFILE,
+	configPath = path.resolve(home, '.keypair-manager'),
+
 	config,
 
 	buildConfig = function () {
 		var config;
 		
 		try {
-			config = require('./config');
+			config = require(configPath + '/config.json');
 		} catch (err) {
+			fs.mkdirSync(configPath);
 			config = {};
 		}
 
@@ -17,7 +21,7 @@ var fs = require('fs-extra'),
 	},
 
 	saveConfig = function () {
-		fs.writeFileSync('./config.json', JSON.stringify(config));
+		fs.writeFileSync(path.resolve(configPath, 'config.json'), JSON.stringify(config));
 	};
 
 	config = buildConfig();
@@ -61,8 +65,7 @@ module.exports = {
 	},
 
 	'set': function (keypair) {
-		var home = process.env.HOME || process.env.USERPROFILE,
-			privatKey,
+		var privatKey,
 			publicKey,
 			oldPrivateKey = path.resolve(home ,'.ssh', 'id_rsa'),
 			oldPublicKey = path.resolve(home ,'.ssh', 'id_rsa.pub');
