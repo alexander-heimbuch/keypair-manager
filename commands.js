@@ -74,7 +74,7 @@ module.exports = {
 			return console.log(clc.red('No source set, please add a source before you try to list your keys'));
 		}
 
-		path.resolve(config.source, keypair);
+		privatKey = path.resolve(config.source, keypair);
 		publicKey = path.resolve(config.source, keypair + '.pub');
 
 		if (!fs.existsSync(privatKey) || !fs.statSync(privatKey).isFile() || !fs.existsSync(publicKey) || !fs.statSync(publicKey).isFile()) {
