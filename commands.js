@@ -62,14 +62,17 @@ module.exports = {
 
 	'set': function (keypair) {
 		var home = process.env.HOME || process.env.USERPROFILE,
-			privatKey = path.resolve(config.source, keypair),
-			publicKey = path.resolve(config.source, keypair + '.pub'),
+			privatKey,
+			publicKey,
 			oldPrivateKey = path.resolve(home ,'.ssh', 'id_rsa'),
 			oldPublicKey = path.resolve(home ,'.ssh', 'id_rsa.pub');
 
 		if (config.source === undefined) {
 			return console.log(clc.red('No source set, please add a source before you try to list your keys'));
 		}
+
+		path.resolve(config.source, keypair);
+		publicKey = path.resolve(config.source, keypair + '.pub');
 
 		if (!fs.existsSync(privatKey) || !fs.statSync(privatKey).isFile() || !fs.existsSync(publicKey) || !fs.statSync(publicKey).isFile()) {
 			return console.log(clc.red('Can\'t find the keypair for ' + keypair));

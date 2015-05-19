@@ -12,7 +12,7 @@ program
 	.action(commands.current);
 
 program
-	.command('set <ssh-key-name>')
+	.command('set [keypair-name]')
 	.description('set a ssh keypair')
 	.action(commands.set);
 
