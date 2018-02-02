@@ -16,7 +16,7 @@
   "dependencies": {
     "cli-color": "^1.0.0",
     "commander": "^2.8.1",
-    "fs-extra": "^0.18.3"
+    "fs-extra": "^5.0.0"
   },
   "bin": {
     "ssh-key": "index.js"
