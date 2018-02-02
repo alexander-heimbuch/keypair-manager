@@ -1,4 +1,6 @@
 # keypair-manager
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/alexander-heimbuch/keypair-manager.svg)](https://greenkeeper.io/)
 SSH keypair manager
 
 ## Installation
